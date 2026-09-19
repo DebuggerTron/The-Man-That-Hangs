@@ -6,7 +6,7 @@
 
 int main(void)
 {
-    const char *words[] = {"giraffe", "penguin", "gold", "dolphin", "habitat", "cheetah", "obese", "rhino", "psithurism", "tiger", "lebron"};
+    const char *words[] = {"giraffe", "penguin", "gold", "dolphin", "habitat", "cheetah", "obese", "rhino", "psithurism", "tiger", "lebron", "assassin", "pancake", "internet", "connection", "swan", "burrito", "word", "mustard", "digital", "binary", "hairbrush", "shielded", "jentacular", "apricity", "rainbow", "bottled", "furious", "speedy", "drenched", "moist", "weather", "random", "supersonic", "math", "time", "studio", "type", "string", "pearl", "stain", "boombox", "harmful"};
     const int wordCount = (int)(sizeof(words) / sizeof(words[0]));
     char display[70], guessed[50] = "";
     int wrong = 0, maxWrong = 6;
@@ -26,6 +26,7 @@ int main(void)
         printf("\nWord: ");
         for (size_t i = 0; i < len; i++) printf("%c ", display[i]);
         printf("\nWrong Guesses: %d out of %d\n", wrong, maxWrong);
+        printf("\nLength of Word: %d\n", strlen(word));
         printf("\nGuessed Letters: %s\n", guessed);
         printf("Guess a Letter: ");
         scanf("%c", &guess);
