@@ -1,0 +1,59 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+#include <time.h>
+
+int main(void)
+{
+    const char *words[] = {"giraffe", "penguin", "gold", "dolphin", "habitat", "cheetah", "obese", "rhino", "psithurism", "tiger", "lebron"};
+    const int wordCount = (int)(sizeof(words) / sizeof(words[0]));
+    char display[70], guessed[50] = "";
+    int wrong = 0, maxWrong = 6;
+
+    srand((unsigned int)time(NULL));
+    const char *word = words[rand() % wordCount];
+    size_t len = strlen(word);
+
+    for (size_t i = 0; i < len; i++) display[i] = '_';
+    display[len] = '\0';
+
+    printf("Hangman Game!!!\n");
+    while (wrong < maxWrong && strcmp(display, word) != 0) {
+        char guess;
+        int found = 0;
+
+        printf("\nWord: ");
+        for (size_t i = 0; i < len; i++) printf("%c ", display[i]);
+        printf("\nWrong Guesses: %d out of %d\n", wrong, maxWrong);
+        printf("\nGuessed Letters: %s\n", guessed);
+        printf("Guess a Letter: ");
+        scanf("%c", &guess);
+        guess = (char)tolower((unsigned char)guess);
+
+        if (!isalpha((unsigned char)guess)) {
+            printf("Please enter a letter.\n");
+            continue;
+        }
+        if (strchr(guessed, guess)) {
+            printf("YOu already guessed that letter.\n");
+            continue;
+        }
+
+        size_t gLen = strlen(guessed);
+        guessed[gLen] = guess;
+        guessed[gLen + 1] = '\0';
+
+        for(size_t i = 0; i < len; i++) {
+            if (word[i] == guess) {
+                display[i] = guess;
+                found = 1;
+            }    
+        }
+        if (!found) wrong++;
+    }
+    if (strcmp(display, word) == 0) printf("You WON!! The word was %s.\n", word);
+    else printf("Game OVER!!! You LOSE!!!! The word was %s!!\n", word);
+
+    return 0;
+}
