@@ -6,7 +6,7 @@
 
 int main(void)
 {
-    const char *words[] = {"giraffe", "penguin", "gold", "dolphin", "habitat", "cheetah", "obese", "rhino", "psithurism", "tiger", "lebron", "assassin", "pancake", "internet", "connection", "swan", "burrito", "word", "mustard", "digital", "binary", "hairbrush", "shielded", "jentacular", "apricity", "rainbow", "bottled", "furious", "speedy", "drenched", "moist", "weather", "random", "supersonic", "math", "time", "studio", "type", "string", "pearl", "stain", "boombox", "harmful"};
+    const char *words[] = {"giraffe", "penguin", "gold", "dolphin", "habitat", "cheetah", "obese", "rhino", "psithurism", "tiger", "lebron", "assassin", "pancake", "internet", "connection", "swan", "burrito", "word", "mustard", "digital", "binary", "hairbrush", "shielded", "jentacular", "apricity", "rainbow", "bottled", "furious", "speedy", "drenched", "moist", "weather", "random", "supersonic", "math", "time", "studio", "type", "string", "pearl", "stain", "boombox", "harmful", "purified", "advancing", "xysti", "deciphered", "football", "absurdly", "pocketing", "achieving", "badger", "sharpened", "batteries", "divining"};
     const int wordCount = (int)(sizeof(words) / sizeof(words[0]));
     char display[70], guessed[50] = "";
     int wrong = 0, maxWrong = 6;
@@ -37,7 +37,7 @@ int main(void)
             continue;
         }
         if (strchr(guessed, guess)) {
-            printf("YOu already guessed that letter.\n");
+            printf("You already guessed that letter.\n");
             continue;
         }
 
@@ -53,8 +53,8 @@ int main(void)
         }
         if (!found) wrong++;
     }
-    if (strcmp(display, word) == 0) printf("You WON!! The word was %s.\n", word);
-    else printf("Game OVER!!! You LOSE!!!! The word was %s!!\n", word);
+    if (strcmp(display, word) == 0) printf("You WON!! The word was: %s.\n", word);
+    else printf("GAME OVER!!! YOU LOSE!!!! The word was: %s!!\n", word);
 
     return 0;
 }
